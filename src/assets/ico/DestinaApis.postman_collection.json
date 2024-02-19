@@ -1,0 +1,963 @@
+{
+	"info": {
+		"_postman_id": "2fcc770e-4af3-4d85-9e61-b672a239185e",
+		"name": "DestinaApis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3996457"
+	},
+	"item": [
+		{
+			"name": "Group",
+			"item": [
+				{
+					"name": "Add Group",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"institute_group_name\": \"Dummy Institute Group\",\r\n    \"slug\": null,\r\n    \"about_group\": null,\r\n    \"headquarter_address\": \"Belgavi\",\r\n    \"email\": \"test@gmail.com\",\r\n    \"phone\": \"1231231236\",\r\n    \"contact_person\": \"User\",\r\n    \"contact_person_phone\": null,\r\n    \"contact_person_email\": null,\r\n    \"website_url\": null,\r\n    \"established_year\": null,\r\n    \"group_type\": \"private\",\r\n    \"logo_url\": null,\r\n    \"logo_small_url\": null,\r\n    \"favicon_url\": null,\r\n    \"password\": \"password\",\r\n    \"domain\": \"test.localhost\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{main_url}}/superadmin/institute_group",
+							"host": [
+								"{{main_url}}"
+							],
+							"path": [
+								"superadmin",
+								"institute_group"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Group",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{main_url}}/superadmin/institute_group",
+							"host": [
+								"{{main_url}}"
+							],
+							"path": [
+								"superadmin",
+								"institute_group"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Group",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{main_url}}/superadmin/institute_group/0ea6efed-3e9e-4a6e-8fbe-27ef235c7b7f",
+							"host": [
+								"{{main_url}}"
+							],
+							"path": [
+								"superadmin",
+								"institute_group",
+								"0ea6efed-3e9e-4a6e-8fbe-27ef235c7b7f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Group",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{main_url}}/superadmin/institute_group/0ea6efed-3e9e-4a6e-8fbe-27ef235c7b7f",
+							"host": [
+								"{{main_url}}"
+							],
+							"path": [
+								"superadmin",
+								"institute_group",
+								"0ea6efed-3e9e-4a6e-8fbe-27ef235c7b7f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{main_url}}/superadmin/institute_group/0ea6efed-3e9e-4a6e-8fbe-27ef235c7b7f",
+							"host": [
+								"{{main_url}}"
+							],
+							"path": [
+								"superadmin",
+								"institute_group",
+								"0ea6efed-3e9e-4a6e-8fbe-27ef235c7b7f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Status",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{main_url}}/superadmin/institute_group/0ea6efed-3e9e-4a6e-8fbe-27ef235c7b7f/status",
+							"host": [
+								"{{main_url}}"
+							],
+							"path": [
+								"superadmin",
+								"institute_group",
+								"0ea6efed-3e9e-4a6e-8fbe-27ef235c7b7f",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Active Group",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{main_url}}/superadmin/institute_group/active",
+							"host": [
+								"{{main_url}}"
+							],
+							"path": [
+								"superadmin",
+								"institute_group",
+								"active"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UniversityOrBoard",
+			"item": [
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/board_university",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"board_university"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"\",\r\n    \"slug\" : \"\",\r\n    \"description\" : \"\",\r\n    \"is_board\" : 0,\r\n    \"is_university\": 0,\r\n    \"logo\": \"\",\r\n    \"board_type\": \"national\",\r\n    \"university_type\": \"central\",\r\n    \"state\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/board_university",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"board_university"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"\",\r\n    \"slug\" : \"\",\r\n    \"description\" : \"\",\r\n    \"is_board\" : 0,\r\n    \"is_university\": 0,\r\n    \"logo\": \"\",\r\n    \"board_type\": \"national\",\r\n    \"university_type\": \"central\",\r\n    \"state\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/board_university/{id}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"board_university",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/board_university/{id}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"board_university",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/board_university/{id}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"board_university",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Status",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/board_university/{id}/status",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"board_university",
+								"{id}",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Active Board",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/board_university/active",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"board_university",
+								"active"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Course Type",
+			"item": [
+				{
+					"name": "Add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"\",\r\n    \"slug\": \"\",\r\n    \"descriptionnnn\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/course_type",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"course_type"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/course_type",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"course_type"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/course_type/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"course_type",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"\",\r\n    \"slug\" : \"\",\r\n    \"description\" : \"\",\r\n    \"is_board\" : 0,\r\n    \"is_university\": 0,\r\n    \"logo\": \"\",\r\n    \"board_type\": \"national\",\r\n    \"university_type\": \"central\",\r\n    \"state\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/course_type/{id}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"course_type",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/course_type/{id}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"course_type",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Status",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/course_type/{id}/status",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"course_type",
+								"{id}",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Active",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/course_type/active",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"course_type",
+								"active"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Courses",
+			"item": [
+				{
+					"name": "Add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"\",\r\n    \"slug\": \"\",\r\n    \"description\": \"\",\r\n    \"duration\": \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/course",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"course"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/course",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"course"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/course/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"course",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"\",\r\n    \"slug\" : \"\",\r\n    \"description\" : \"\",\r\n    \"is_board\" : 0,\r\n    \"is_university\": 0,\r\n    \"logo\": \"\",\r\n    \"board_type\": \"national\",\r\n    \"university_type\": \"central\",\r\n    \"state\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/course/{id}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"course",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/course/{id}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"course",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Status",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/course/{id}/status",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"course",
+								"{id}",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Active",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/course/active",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"course",
+								"active"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Board Class",
+			"item": [
+				{
+					"name": "Add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"board_or_university_id\": \"\",\r\n    \"course_type_id\": \"\",\r\n    \"course_id\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/board_class",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"board_class"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/board_class",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"board_class"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/board_class/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"board_class",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"\",\r\n    \"slug\" : \"\",\r\n    \"description\" : \"\",\r\n    \"is_board\" : 0,\r\n    \"is_university\": 0,\r\n    \"logo\": \"\",\r\n    \"board_type\": \"national\",\r\n    \"university_type\": \"central\",\r\n    \"state\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/board_class/{id}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"board_class",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/board_class/{id}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"board_class",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Status",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/board_class/{id}/status",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"board_class",
+								"{id}",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Active",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/board_class/active",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"board_class",
+								"active"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sessions",
+			"item": [
+				{
+					"name": "Get All Sessions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/session",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"session"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Session",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"session\": \"2024-25\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/session",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"session"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Session By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/session/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"session",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Session",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"session\" : \"2026-27\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/session/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"session",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Session",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/session/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"session",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Status",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/session/1/status",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"session",
+								"1",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Active",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/session/active",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"session",
+								"active"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "app.localhost:8000/api/v1",
+			"type": "string"
+		},
+		{
+			"key": "main_url",
+			"value": "localhost:8000/api/v1",
+			"type": "string"
+		}
+	]
+}
