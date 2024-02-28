@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { baseUrl } from '../config';
 import { Link } from 'react-router-dom';
 import school_icon from '../../assets/ico/school.svg';
+import edit_icon from '../../assets/ico/edit.svg';
+import delete_icon from '../../assets/ico/delete.svg';
 
 const rows = [
     {
@@ -212,8 +214,8 @@ const GroupTable = () => {
         established_year: false,
         group_type: false,
         status: true,
+        edit: false,
         delete: true,
-        edit: false
     });
 
     const [data, setData] = useState(rows);
@@ -278,17 +280,6 @@ const GroupTable = () => {
     // Status handler 
     const handlestatusToggle = async (id) => {
         try {
-            const updatedData = filterList.map((row) => {
-                if (row.id === id) {
-                    return {
-                        ...row,
-                        status: row.status === '0' ? '1' : '0',
-                    };
-                }
-                return row;
-            });
-            setData(updatedData);
-
             const respose = await fetch(`${baseUrl}/superadmin/institute_group/${id}/status`, {
                 method: 'PUT',
                 headers: {
@@ -296,13 +287,10 @@ const GroupTable = () => {
                 }
             });
             const jsonData = await respose.json();
-            console.log(jsonData);
-            // const respose = await fetch(baseUrl + '/superadmin/institute_group/' + id + '/'+ 'status')
+            if (jsonData.success) {
+                window.location.reload();
+            };
 
-
-            // Simulate backend update with a delay
-            // await new Promise((resolve) => setTimeout(resolve, 1000));
-            // console.log(`status updated as for ID ${id} as ${status}`);
         } catch (error) {
             console.error('Error during status update:', error);
         }
@@ -384,14 +372,14 @@ const GroupTable = () => {
 
                                             <button
                                                 onClick={() => handleDelete(row.id)}
-                                                className={`text-white text-sm bg-red-500 py-1 px-2 rounded-md`}
+                                                className={`text-sm  py-1 px-2 rounded-md`}
                                             >
-                                                Delete
+                                                <img src={delete_icon} alt='delete' className='h-5' />
                                             </button>
                                         ) : columnName === 'edit' ? (
                                             <Link to={`/group/edit-group/${row.id}`} >
-                                                <button className={`text-white text-sm bg-green-500 py-1 px-2 rounded-md`}>
-                                                    Edit
+                                                <button className={` text-sm  py-1 px-2 rounded-md`}>
+                                                    <img src={edit_icon} alt='edit' className='h-5' />
                                                 </button>
                                             </Link>
                                         ) : (

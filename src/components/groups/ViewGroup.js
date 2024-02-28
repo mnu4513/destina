@@ -31,6 +31,8 @@ const ViewGroup = () => {
                 loading ? <h2>loading</h2> :
                     <h2>group_id = {group_id} </h2>
             }
+
+            id: {data?.id}
         </div>
     );
 };

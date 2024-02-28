@@ -13,7 +13,25 @@ import Sidebar3 from './components/SideMenu3';
 import ViewGroup from './components/groups/ViewGroup';
 import EditGroup from './components/groups/EditGroup';
 import AllSessions from './components/sessions/AllSessions';
-
+import SourceOfContent from './components/sourceOfContent/SourceOfContent';
+import VisitorPurpose from './components/visitorPurpose/VisitorPurpose';
+import FormGroup from './components/fromGroup/FromGroup';
+import Designation from './components/designation/Designation';
+import StudentHouse from './components/studentHouse/StudentHouse';
+import LeaveType from './components/leaveType/LeaveType';
+import FeeDiscount from './components/feeDiscount/FeeDiscount';
+import Section from './components/section/Section';
+import ClassData from './components/classData/ClassData';
+import Role from './components/role/Role';
+import StudentCategory from './components/studentCategory/StudentCategory';
+import SMS from './components/sms/SMS';
+import TimeZone from './components/timezone/TimeZone';
+import Currency from './components/currency/Currency';
+import PaymentGateway from './components/paymentGateway/PaymentGateway';
+import BoardClass from './components/boardClass/BoardClasses';
+import Courses from './components/courses/Courses';
+import CoursesType from './components/courseType/CourseType';
+import BoardUniversity from './components/boardUniversity/BoardUnversity';
 
 
 const App = () => {
@@ -76,6 +94,82 @@ const appRouter = createBrowserRouter([
       {
         path: '/sessions',
         element: <AllSessions />
+      },
+      {
+        path: '/source-of-content',
+        element: <SourceOfContent />
+      },
+      {
+        path: '/visitor-purpose',
+        element: <VisitorPurpose />
+      },
+      {
+        path: '/form-group',
+        element: <FormGroup />
+      },
+      {
+        path: '/designation',
+        element: <Designation />
+      },
+      {
+        path: '/student-house',
+        element: <StudentHouse />
+      },
+      {
+        path: '/leave-type',
+        element: <LeaveType />
+      },
+      {
+        path: '/fee-discount',
+        element: <FeeDiscount />
+      },
+      {
+        path: '/section',
+        element: <Section />
+      },
+      {
+        path: '/class',
+        element: <ClassData />
+      },
+      {
+        path: '/role',
+        element: <Role />
+      },
+      {
+        path: '/student-category',
+        element: <StudentCategory />
+      },
+      {
+        path: '/sms',
+        element: <SMS />
+      },
+      {
+        path: '/timezone',
+        element: <TimeZone />
+      },
+      {
+        path: '/currency',
+        element: <Currency />
+      },
+      {
+        path: '/payment-gateway',
+        element: <PaymentGateway />
+      },
+      {
+        path: '/board-class',
+        element: <BoardClass />
+      },
+      {
+        path: '/courses',
+        element: <Courses />
+      },
+      {
+        path: '/courses-type',
+        element: <CoursesType />
+      },
+      {
+        path: '/board_uni',
+        element: <BoardUniversity />
       }
     ]
   }

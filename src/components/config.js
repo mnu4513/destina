@@ -1051,6 +1051,65 @@ export const data = {
     },
     "message": "Student Field found",
     "code": 200
-}
+};
 
 export const baseUrl = 'https://destinaerp.in/public/api/v1';
+
+export const sessionsData = [
+    {
+        "id": 1,
+        "session": "2025-2666",
+        "status": 1,
+        "created_at": "2024-02-23T07:29:59.000000Z",
+        "updated_at": "2024-02-23T12:25:37.000000Z"
+    },
+    {
+        "id": 2,
+        "session": "2025-21",
+        "status": 1,
+        "created_at": "2024-02-23T07:30:06.000000Z",
+        "updated_at": "2024-02-23T07:30:06.000000Z"
+    },
+    {
+        "id": 3,
+        "session": "2025-22",
+        "status": 1,
+        "created_at": "2024-02-23T07:30:11.000000Z",
+        "updated_at": "2024-02-23T07:30:11.000000Z"
+    },
+    {
+        "id": 4,
+        "session": "2025-23",
+        "status": 1,
+        "created_at": "2024-02-23T07:30:16.000000Z",
+        "updated_at": "2024-02-23T07:30:16.000000Z"
+    },
+    {
+        "id": 6,
+        "session": "2025-2666",
+        "status": 1,
+        "created_at": "2024-02-23T07:29:59.000000Z",
+        "updated_at": "2024-02-23T12:25:37.000000Z"
+    },
+    {
+        "id": 7,
+        "session": "2025-21",
+        "status": 1,
+        "created_at": "2024-02-23T07:30:06.000000Z",
+        "updated_at": "2024-02-23T07:30:06.000000Z"
+    },
+    {
+        "id": 8,
+        "session": "2025-22",
+        "status": 1,
+        "created_at": "2024-02-23T07:30:11.000000Z",
+        "updated_at": "2024-02-23T07:30:11.000000Z"
+    },
+    {
+        "id": 9,
+        "session": "2025-23",
+        "status": 1,
+        "created_at": "2024-02-23T07:30:16.000000Z",
+        "updated_at": "2024-02-23T07:30:16.000000Z"
+    }
+];
