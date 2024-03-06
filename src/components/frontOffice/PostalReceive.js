@@ -4,27 +4,30 @@ import edit_icon from '../../assets/ico/edit.svg';
 import delete_icon from '../../assets/ico/delete.svg';
 
 
-const PaymentGateway = () => {
+const PostalReceive = () => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [editSourceId, setEditSourceId] = useState('');
     const [showEditPopup, setShowEditPopup] = useState(false);
     const [search, setSearch] = useState('');
     const [filterList, setFilterList] = useState(data);
-    const [name, setName] = useState('');
-    const [slug, setSlug] = useState('');
-    const [description, setDescription] = useState('');
-    const [pricing, setPricing] = useState('');
-    const [logo_url, setlogo_url] = useState('');
-    const [support_foreign_currency, setSupport_foreign_currency] = useState('');
-    const [url, setUrl] = useState('');
-    const [nameEdit, setNameEdit] = useState('');
-    const [slugEdit, setSlugEdit] = useState('');
-    const [pricingEdit, setPricingEdit] = useState('');
-    const [descriptionEdit, setDescriptionEdit] = useState('');
-    const [logo_urlEdit, setlogo_urlEdit] = useState('');
-    const [support_foreign_currencyEdit, setSupport_foreign_currencyEdit] = useState('');
-    const [urlEdit, setUrlEdit] = useState('');
+
+    const [from_title, setfrom_title] = useState('');
+    const [from_address, setfrom_address] = useState('');
+    const [reference_no, setreference_no] = useState('');
+    const [note, setNote] = useState('');
+    const [to_title, setto_title] = useState('');
+    const [date, setDate] = useState('');
+    const [document, setDocument] = useState('');
+
+    const [from_titleEdit, setfrom_titleEdit] = useState('');
+    const [from_addressEdit, setfrom_addressEdit] = useState('');
+    const [reference_noEdit, setreference_noEdit] = useState('');
+    const [noteEdit, setNoteEdit] = useState('');
+    const [to_titleEdit, setto_titleEdit] = useState('');
+    const [dateEdit, setDateEdit] = useState('');
+    const [documentEdit, setDocumentEdit] = useState('');
+
 
     useEffect(() => {
         getData();
@@ -36,12 +39,12 @@ const PaymentGateway = () => {
 
     // To create new source 
     async function handleCreate(e) {
-        const response = await fetch(baseUrl + '/admin/payment-gateway', {
+        const response = await fetch(baseUrl + '/admin/front_office/postal_receive', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ name, slug, description, pricing, logo_url, support_foreign_currency, url })
+            body: JSON.stringify({ from_title, from_address, reference_no, note, to_title, date, document })
         });
 
         const jsonData = await response.json();
@@ -56,38 +59,38 @@ const PaymentGateway = () => {
     // To fetch all sources
     async function getData() {
         try {
-            const response = await fetch(baseUrl + '/admin/payment-gateway');
+            const response = await fetch(baseUrl + '/admin/front_office/postal_receive');
             const jsonData = await response.json();
             if (jsonData.success) {
                 setData(jsonData.data);
                 setLoading(false);
             } else {
                 window.alert(jsonData.message);
-            };
+            }
         } catch (error) {
             console.log(error);
-        };
+        }
     };
 
 
     // Handle search 
     async function handleSearch(e) {
         e.preventDefault();
-        const list = data.filter((e) => e.name.toLowerCase().includes(search.toLowerCase()));
+        const list = data.filter((e) => e.from_title.toLowerCase().includes(search.toLowerCase()));
         setFilterList(list);
     };
 
     // Edit source handler
-    async function handleEdit(e, id, name, slug, description, pricing, logo_url, support_foreign_currency, url) {
+    async function handleEdit(e, id, from_title, from_address, reference_no, note, to_title, date, document) {
         e.preventDefault();
         setEditSourceId(id);
-        setNameEdit(name);
-        setSlugEdit(slug);
-        setDescriptionEdit(description);
-        setPricingEdit(pricing);
-        setlogo_urlEdit(logo_url);
-        setSupport_foreign_currencyEdit(support_foreign_currency);
-        setUrlEdit(url);
+        setfrom_titleEdit(from_title);
+        setfrom_addressEdit(from_address);
+        setreference_noEdit(reference_no);
+        setNoteEdit(note);
+        setto_titleEdit(to_title);
+        setDateEdit(date);
+        setDocumentEdit(document);
         setShowEditPopup(true);
     };
 
@@ -95,12 +98,12 @@ const PaymentGateway = () => {
     async function handleSaveEdit(e) {
         e.preventDefault();
         try {
-            const response = await fetch(baseUrl + '/admin/payment-gateway/' + editSourceId, {
+            const response = await fetch(baseUrl + '/admin/front_office/postal_receive/' + editSourceId, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ name: nameEdit, slug: slugEdit })
+                body: JSON.stringify({ to_title: to_titleEdit, from_address: from_addressEdit, reference_no: reference_noEdit, note: noteEdit, from_title: from_titleEdit, date: dateEdit, document: documentEdit })
             });
 
             const jsonData = await response.json();
@@ -120,7 +123,7 @@ const PaymentGateway = () => {
     async function handleDelete(e, id) {
         e.preventDefault();
         try {
-            const response = await fetch(baseUrl + '/admin/payment-gateway/' + id, {
+            const response = await fetch(baseUrl + '/admin/front_office/postal_receive/' + id, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'
@@ -141,17 +144,17 @@ const PaymentGateway = () => {
 
     return (
         <div className='flex flex-col lg:flex-row w-full'>
-            {/* Create role */}
-            <div className='border-2 flex-grow min-w-min max-h-fit border-gray-200 px-5 py-2 space-y-3 mt-4 mx-auto w-full'>
-                <p>Add Payment Gateway</p>
+            {/* Create source */}
+            <div className='border-2 flex-grow min-w-min max-h-min border-gray-200 px-5 py-2 space-y-3 mt-4 mx-auto w-full'>
+                <p>Add Postal Receive</p>
                 <hr />
-                <input type='text' value={name} placeholder='Enter name' onChange={(e) => setName(e.target.value)} className='border-2 border-gray-500 px-2 py-1 my-2 rounded-md w-full' />
-                <input type='text' value={slug} placeholder='Enter slug' onChange={(e) => setSlug(e.target.value)} className='border-2 border-gray-500 px-2 py-1 my-2 rounded-md w-full' />
-                <input type='text' value={description} placeholder='Enter description' onChange={(e) => setDescription(e.target.value)} className='border-2 border-gray-500 px-2 py-1 my-2 rounded-md w-full' />
-                <input type='text' value={pricing} placeholder='Enter pricing' onChange={(e) => setPricing(e.target.value)} className='border-2 border-gray-500 px-2 py-1 my-2 rounded-md w-full' />
-                <input type='text' value={logo_url} placeholder='Enter logo url' onChange={(e) => setlogo_url(e.target.value)} className='border-2 border-gray-500 px-2 py-1 my-2 rounded-md w-full' />
-                <input type='text' value={support_foreign_currency} placeholder='Enter support forreign curency' onChange={(e) => setSupport_foreign_currency(e.target.value)} className='border-2 border-gray-500 px-2 py-1 my-2 rounded-md w-full' />
-                <input type='text' value={url} placeholder='Enter url' onChange={(e) => setUrl(e.target.value)} className='border-2 border-gray-500 px-2 py-1 my-2 rounded-md w-full' />
+                <input type='text' value={from_title} placeholder='Enter from title' onChange={(e) => setfrom_title(e.target.value)} className='border-2 border-gray-500 px-2 py-1 my-2 rounded-md w-full' />
+                <input type='text' value={from_address} placeholder='Enter to address' onChange={(e) => setfrom_address(e.target.value)} className='border-2 border-gray-500 px-2 py-1 my-2 rounded-md w-full' />
+                <input type='text' value={reference_no} placeholder='Enter reference no' onChange={(e) => setreference_no(e.target.value)} className='border-2 border-gray-500 px-2 py-1 my-2 rounded-md w-full' />
+                <input type='text' value={note} placeholder='Enter note' onChange={(e) => setNote(e.target.value)} className='border-2 border-gray-500 px-2 py-1 my-2 rounded-md w-full' />
+                <input type='text' value={to_title} placeholder='Enter to title' onChange={(e) => setto_title(e.target.value)} className='border-2 border-gray-500 px-2 py-1 my-2 rounded-md w-full' />
+                <input type='text' value={date} placeholder='Enter date DD/MM/YYYY' onChange={(e) => setDate(e.target.value)} className='border-2 border-gray-500 px-2 py-1 my-2 rounded-md w-full' />
+                <input type='text' value={document} placeholder='Enter document' onChange={(e) => setDocument(e.target.value)} className='border-2 border-gray-500 px-2 py-1 my-2 rounded-md w-full' />
                 <hr />
                 <button onClick={(e) => handleCreate(e)} className='border-2 bg-gray-500 text-white px-2 py-1 rounded-md w-full'>Add</button>
             </div>
@@ -169,9 +172,9 @@ const PaymentGateway = () => {
                         <table className="w-full text-sm text-left ">
                             <thead >
                                 <tr className="w-full uppercase">
-                                    <th scope="col" className="px-6 py-3 flex-grow">Name</th>
-                                    <th scope="col" className="px-6 py-3 uppercase">pricing</th>
-                                    <th scope="col" className="px-6 py-3 uppercase">support_foreign_currency</th>
+                                    <th scope="col" className="px-6 py-3 flex-grow">from title </th>
+                                    <th scope="col" className="px-6 py-3 uppercase">to title</th>
+                                    <th scope="col" className="px-6 py-3 uppercase">date</th>
                                     <th scope="col" className="px-6 py-3 flex-shrink-0 text-right mr-3">action</th>
                                 </tr>
                             </thead>
@@ -180,24 +183,17 @@ const PaymentGateway = () => {
                                 {filterList.map((source) => (
                                     <tr key={source.id} className="bg-white border-b text-gray-600">
                                         <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                            {source.name}
+                                            {source.from_title}
                                         </th>
                                         <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                            {source.pricing}
+                                            {source.to_title}
                                         </th>
                                         <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                            {source.support_foreign_currency}
+                                            {source.date}
                                         </th>
-                                        {/* <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                            <button
-                                                onClick={(e) => toggleStatus(e, source.id)}
-                                                className={`border ${source.status ? 'bg-green-500' : 'bg-red-500'} text-white py-1 px-2 text-sm rounded-md `}>
-                                                {source.status ? 'active' : 'inactive'}
-                                            </button>
-                                        </th> */}
                                         <th scope="row" className="px-6 py-3 text-right">
                                             <div className='flex flex-row justify-end'>
-                                                <button className='text-sm  rounded-md py-1 px-2' onClick={(e) => handleEdit(e, source.id, source.name, source.slug, source.description, source.pricing, source.logo_url, source.support_foreign_currency, source.url)}> <img src={edit_icon} alt='edit' className='h-5' /> </button>
+                                                <button className='text-sm  rounded-md py-1 px-2' onClick={(e) => handleEdit(e, source.id, source.from_title, source.from_address, source.reference_no, source.note, source.to_title, source.date, source.document)}> <img src={edit_icon} alt='edit' className='h-5' /> </button>
                                                 <button className='text-sm  rounded-md py-1 px-2 ml-2' onClick={(e) => handleDelete(e, source.id)}> <img src={delete_icon} alt='delete' className='h-5' /> </button>
                                             </div>
                                         </th>
@@ -213,63 +209,72 @@ const PaymentGateway = () => {
                     <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-50">
                         <div className="bg-white p-8 rounded-md">
                             <h2 className="text-2xl mb-4">Edit source</h2>
-                            {/* name */}
+
+
+                            {/*  from titile */}
                             <input
                                 type="text"
-                                value={nameEdit}
-                                placeholder='Enter name'
-                                onChange={(e) => setNameEdit(e.target.value)}
-                                className="border border-gray-300 p-2 mb-4 w-full"
-                            />
-                            {/* Slug */}
-                            <input
-                                type="text"
-                                value={slugEdit}
-                                placeholder='Enter slug'
-                                onChange={(e) => setSlugEdit(e.target.value)}
+                                value={from_titleEdit}
+                                placeholder='Enter from title'
+                                onChange={(e) => setfrom_titleEdit(e.target.value)}
                                 className="border border-gray-300 p-2 mb-4 w-full"
                             />
 
-                            {/* Description */}
+                            {/* from address  */}
                             <input
                                 type="text"
-                                value={descriptionEdit}
-                                placeholder='Enter description'
-                                onChange={(e) => setDescriptionEdit(e.target.value)}
+                                value={from_addressEdit}
+                                placeholder='Enter to address '
+                                onChange={(e) => setfrom_addressEdit(e.target.value)}
                                 className="border border-gray-300 p-2 mb-4 w-full"
                             />
-                            {/* pricing */}
+
+                            {/* reference no */}
                             <input
                                 type="text"
-                                value={pricingEdit}
-                                placeholder='Enter pricing'
-                                onChange={(e) => setPricingEdit(e.target.value)}
+                                value={reference_noEdit}
+                                placeholder='Enter reference no'
+                                onChange={(e) => setreference_noEdit(e.target.value)}
                                 className="border border-gray-300 p-2 mb-4 w-full"
                             />
-                            {/* logo url */}
+
+                            {/*  note */}
                             <input
                                 type="text"
-                                value={logo_urlEdit}
-                                placeholder='Enter logo url'
-                                onChange={(e) => setlogo_urlEdit(e.target.value)}
+                                value={noteEdit}
+                                placeholder='Enter note'
+                                onChange={(e) => setNoteEdit(e.target.value)}
                                 className="border border-gray-300 p-2 mb-4 w-full"
                             />
-                            {/* support foreign currency */}
+
+                            {/* to title  */}
                             <input
                                 type="text"
-                                value={support_foreign_currencyEdit}
-                                placeholder='Enter support foreign currency'
-                                onChange={(e) => setSupport_foreign_currencyEdit(e.target.value)}
+                                value={to_titleEdit}
+                                placeholder='Enter to title'
+                                onChange={(e) => setto_titleEdit(e.target.value)}
                                 className="border border-gray-300 p-2 mb-4 w-full"
                             />
-                            {/* url */}
+
+
+                            {/*  date  */}
                             <input
                                 type="text"
-                                value={urlEdit}
-                                placeholder='Enter url'
-                                onChange={(e) => setUrlEdit(e.target.value)}
+                                value={dateEdit}
+                                placeholder='Enter date DD/MM/YYYY'
+                                onChange={(e) => setDateEdit(e.target.value)}
                                 className="border border-gray-300 p-2 mb-4 w-full"
                             />
+
+                            {/*  document */}
+                            <input
+                                type="text"
+                                value={documentEdit}
+                                placeholder='Enter document'
+                                onChange={(e) => setDocumentEdit(e.target.value)}
+                                className="border border-gray-300 p-2 mb-4 w-full"
+                            />
+
 
                             <div className="flex justify-end">
                                 <button className="bg-blue-500 text-white px-4 py-2 mr-2" onClick={handleSaveEdit}>Save</button>
@@ -283,4 +288,4 @@ const PaymentGateway = () => {
     );
 };
 
-export default PaymentGateway;
+export default PostalReceive;

@@ -6,7 +6,7 @@ import delete_icon from '../../assets/ico/delete.svg';
 
 const BoardUniversity = () => {
     const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [editSourceId, setEditSourceId] = useState('');
     const [showEditPopup, setShowEditPopup] = useState(false);
     const [search, setSearch] = useState('');
@@ -195,7 +195,9 @@ const BoardUniversity = () => {
                     <button className='border py-1 px-2 bg-gray-500 text-white rounded-md' onClick={(e) => handleSearch(e)}>search</button>
                 </div>
                 {
-                    loading ? <h3>Loading</h3> :
+                    loading ? <div class="flex items-center mx-auto my-3 justify-center w-56 h-24 border border-gray-200 rounded-lg bg-gray-50 ">
+                        <div class="px-3 py-1 text-xs font-medium leading-none text-center text-blue-800 bg-blue-200 rounded-full animate-pulse ">loading...</div>
+                    </div> :
                         <table className="w-full text-sm text-left ">
                             <thead >
                                 <tr className="w-full uppercase">
@@ -218,7 +220,7 @@ const BoardUniversity = () => {
                                         <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                             {source.is_university ? 'yes' : 'no'}
                                         </th>
-                                       
+
                                         <th scope="row" className="px-6 py-3 text-right">
                                             <div className='flex flex-row justify-end'>
                                                 <button className='text-sm  rounded-md py-1 px-2' onClick={(e) => handleEdit(e, source.id, source.name, source.slug, source.description, source.is_board, source.is_university, source.logo, source.board_type, source.university_type, source.state)}> <img src={edit_icon} alt='edit' className='h-5' /> </button>

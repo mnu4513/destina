@@ -5,7 +5,7 @@ import delete_icon from '../../assets/ico/delete.svg';
 
 const StudentHouse = () => {
     const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [editSourceId, setEditSourceId] = useState('');
     const [showEditPopup, setShowEditPopup] = useState(false);
     const [search, setSearch] = useState('');
@@ -105,13 +105,13 @@ const StudentHouse = () => {
             });
 
             const jsonData = await response.json();
-            console.log(jsonData);
 
-            // Close the pop-up and reload data if the edit was successful
             if (jsonData.success) {
                 setShowEditPopup(false);
                 window.location.reload();
-            }
+            } else {
+                window.alert(jsonData.message);
+            };
         } catch (error) {
             console.log(error);
         }
@@ -132,7 +132,9 @@ const StudentHouse = () => {
 
             if (jsonData?.success) {
                 window.location.reload();
-            }
+            } else {
+                window.alert(jsonData.message);
+            };
         } catch (error) {
             console.log(error);
         }
@@ -157,7 +159,9 @@ const StudentHouse = () => {
                     <button className='border py-1 px-2 bg-gray-500 text-white rounded-md' onClick={(e) => handleSearch(e)}>search</button>
                 </div>
                 {
-                    loading ? <h3>Loading</h3> :
+                    loading ? <div class="flex items-center mx-auto my-3 justify-center w-56 h-24 border border-gray-200 rounded-lg bg-gray-50 ">
+                        <div class="px-3 py-1 text-xs font-medium leading-none text-center text-blue-800 bg-blue-200 rounded-full animate-pulse ">loading...</div>
+                    </div> :
                         <table className="w-full text-sm text-left ">
                             <thead >
                                 <tr className="w-full uppercase">
@@ -174,14 +178,14 @@ const StudentHouse = () => {
                                             {source.name}
                                         </th>
                                         <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-right">
-                                            <button 
-                                            onClick={(e) => toggleStatus(e, source.id)}
-                                            className={`border ${source.status ? 'bg-green-500' : 'bg-red-500'} text-white py-1 px-2 text-sm rounded-md `}>
+                                            <button
+                                                onClick={(e) => toggleStatus(e, source.id)}
+                                                className={`border ${source.status ? 'bg-green-500' : 'bg-red-500'} text-white py-1 px-2 text-sm rounded-md `}>
                                                 {source.status ? 'active' : 'inactive'}
                                             </button>
                                         </th>
                                         <th scope="row" className="px-6 py-3 text-right">
-                                            <button className='text-sm  rounded-md py-1 px-2' onClick={(e) => handleEdit(e, source.id, source.name, source.slug, source.description)}> <img src={edit_icon} alt='edit' className='h-5' /> </button>
+                                            <button className='text-sm  rounded-md py-1 px-2' onClick={(e) => handleEdit(e, source.id, source.name, source.description)}> <img src={edit_icon} alt='edit' className='h-5' /> </button>
                                             <button className='text-sm  rounded-md py-1 px-2 ml-2' onClick={(e) => handleDelete(e, source.id)}> <img src={delete_icon} alt='delete' className='h-5' /> </button>
                                         </th>
                                     </tr>

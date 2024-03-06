@@ -6,14 +6,11 @@ import Home from './components/Home';
 import Error404 from './components/Error404';
 import NavBar from './components/Navbar';
 import Footer from './components/Footer';
-import Admission from './components/student/Admission';
-import CreateGroup from './components/groups/CreateGroup';
+import Admission from './components/Addmission/Admission';
 import GroupTable from './components/groups/GroupsData';
 import Sidebar3 from './components/SideMenu3';
-import ViewGroup from './components/groups/ViewGroup';
-import EditGroup from './components/groups/EditGroup';
 import AllSessions from './components/sessions/AllSessions';
-import SourceOfContent from './components/sourceOfContent/SourceOfContent';
+import SourceOfContact from './components/sourceOfContact/SourceOfContact';
 import VisitorPurpose from './components/visitorPurpose/VisitorPurpose';
 import FormGroup from './components/fromGroup/FromGroup';
 import Designation from './components/designation/Designation';
@@ -32,6 +29,12 @@ import BoardClass from './components/boardClass/BoardClasses';
 import Courses from './components/courses/Courses';
 import CoursesType from './components/courseType/CourseType';
 import BoardUniversity from './components/boardUniversity/BoardUnversity';
+import AdmissionEnquery from './components/frontOffice/AdmissionEnquery';
+import VisitorBook from './components/frontOffice/VisitorBook';
+import Complaint from './components/frontOffice/Complaint';
+import PhoneCallLog from './components/frontOffice/PhoneCallLog';
+import PostalDispatch from './components/frontOffice/PostalDispatch';
+import PostalReceive from './components/frontOffice/PostalReceive';
 
 
 const App = () => {
@@ -80,24 +83,12 @@ const appRouter = createBrowserRouter([
         element: <GroupTable />
       },
       {
-        path: '/group/create-group',
-        element: <CreateGroup />
-      },
-      {
-        path: '/group/view-group/:group_id',
-        element: <ViewGroup />
-      },
-      {
-        path: '/group/edit-group/:group_id',
-        element: <EditGroup />
-      },
-      {
         path: '/sessions',
         element: <AllSessions />
       },
       {
-        path: '/source-of-content',
-        element: <SourceOfContent />
+        path: '/source-of-contact',
+        element: <SourceOfContact />
       },
       {
         path: '/visitor-purpose',
@@ -170,6 +161,30 @@ const appRouter = createBrowserRouter([
       {
         path: '/board_uni',
         element: <BoardUniversity />
+      },
+      {
+        path: '/admission-enq',
+        element: <AdmissionEnquery />
+      },
+      {
+        path: '/visitor-book',
+        element: <VisitorBook />
+      },
+      {
+        path: '/complaint',
+        element: <Complaint />
+      },
+      {
+        path: '/phone-call-log',
+        element: <PhoneCallLog />
+      },
+      {
+        path: '/postal-dispatch',
+        element: <PostalDispatch />
+      },
+      {
+        path: '/postal-receive',
+        element: <PostalReceive />
       }
     ]
   }

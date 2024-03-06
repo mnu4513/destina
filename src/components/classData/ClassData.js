@@ -5,7 +5,7 @@ import delete_icon from '../../assets/ico/delete.svg';
 
 const ClassData = () => {
     const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [editSourceId, setEditSourceId] = useState('');
     const [showEditPopup, setShowEditPopup] = useState(false);
     const [search, setSearch] = useState('');
@@ -37,16 +37,16 @@ const ClassData = () => {
                 },
                 body: JSON.stringify({ name, slug, section: sectionAr })
             });
-    
+
             const jsonData = await response.json();
-    
+
             if (jsonData.success) {
                 window.location.reload();
             } else {
                 window.alert(jsonData.message);
             };
         } catch (error) {
-           console.log(error); 
+            console.log(error);
         }
     };
 
@@ -162,7 +162,7 @@ const ClassData = () => {
         <div className='flex flex-col lg:flex-row w-full'>
             {/* Create source */}
             <div className='border-2 flex-grow min-w-min max-h-64 border-gray-200 px-5 py-2 space-y-3 mt-4 mx-auto w-full'>
-                <p>Add source</p>
+                <p>Add class</p>
                 <hr />
                 <input type='text' value={name} placeholder='Enter name' onChange={(e) => setName(e.target.value)} className='border-2 border-gray-500 px-2 py-1 my-2 rounded-md w-full' />
                 <input type='text' value={slug} placeholder='Enter slug' onChange={(e) => setSlug(e.target.value)} className='border-2 border-gray-500 px-2 py-1 my-2 rounded-md w-full' />
@@ -178,7 +178,9 @@ const ClassData = () => {
                     <button className='border py-1 px-2 bg-gray-500 text-white rounded-md' onClick={(e) => handleSearch(e)}>search</button>
                 </div>
                 {
-                    loading ? <h3>Loading</h3> :
+                    loading ? <div class="flex items-center mx-auto my-3 justify-center w-56 h-24 border border-gray-200 rounded-lg bg-gray-50 ">
+                        <div class="px-3 py-1 text-xs font-medium leading-none text-center text-blue-800 bg-blue-200 rounded-full animate-pulse ">loading...</div>
+                    </div> :
                         <table className="w-full text-sm text-left ">
                             <thead >
                                 <tr className="w-full uppercase">

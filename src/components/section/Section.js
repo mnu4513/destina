@@ -6,7 +6,7 @@ import delete_icon from '../../assets/ico/delete.svg';
 
 const Section = () => {
     const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [editSourceId, setEditSourceId] = useState('');
     const [showEditPopup, setShowEditPopup] = useState(false);
     const [search, setSearch] = useState('');
@@ -38,6 +38,8 @@ const Section = () => {
 
         if (jsonData.success) {
             window.location.reload();
+        } else {
+            window.alert(jsonData.message);
         };
     };
 
@@ -49,11 +51,12 @@ const Section = () => {
             if (jsonData.success) {
                 setData(jsonData.data);
                 setLoading(false);
-            }
-            console.log(jsonData);
+            } else {
+                window.alert(jsonData.message);
+            };
         } catch (error) {
             console.log(error);
-        }
+        };
     };
 
 
@@ -92,10 +95,12 @@ const Section = () => {
             if (jsonData.success) {
                 setShowEditPopup(false);
                 window.location.reload();
-            }
+            } else {
+                window.alert(jsonData.message);
+            };
         } catch (error) {
             console.log(error);
-        }
+        };
     };
 
     // Delete source handler
@@ -113,17 +118,19 @@ const Section = () => {
 
             if (jsonData?.success) {
                 window.location.reload();
-            }
+            } else {
+                window.alert(jsonData.message);
+            };
         } catch (error) {
             console.log(error);
-        }
+        };
     };
 
     return (
         <div className='flex flex-col lg:flex-row w-full'>
-            {/* Create source */}
+            {/* Create Section */}
             <div className='border-2 flex-grow min-w-min max-h-64 border-gray-200 px-5 py-2 space-y-3 mt-4 mx-auto w-full'>
-                <p>Add source</p>
+                <p>Add Section</p>
                 <hr />
                 <input type='text' value={name} placeholder='Enter name' onChange={(e) => setName(e.target.value)} className='border-2 border-gray-500 px-2 py-1 my-2 rounded-md w-full' />
                 <input type='text' value={slug} placeholder='Enter slug' onChange={(e) => setSlug(e.target.value)} className='border-2 border-gray-500 px-2 py-1 my-2 rounded-md w-full' />
@@ -131,14 +138,16 @@ const Section = () => {
                 <button onClick={(e) => handleCreate(e)} className='border-2 bg-gray-500 text-white px-2 py-1 rounded-md w-full'>Add</button>
             </div>
 
-            {/* Show sources data */}
+            {/* Show section data */}
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg flex-grow w-full mx-3">
                 <div className='border py-3 border-gray-500 mt-4 text-left'>
                     <input className='border py-1 px-2 mx-2 border-gray-500 rounded-md' type='text' placeholder='search source' value={search} onChange={(e) => setSearch(e.target.value)} />
                     <button className='border py-1 px-2 bg-gray-500 text-white rounded-md' onClick={(e) => handleSearch(e)}>search</button>
                 </div>
                 {
-                    loading ? <h3>Loading</h3> :
+                    loading ? <div class="flex items-center mx-auto my-3 justify-center w-56 h-24 border border-gray-200 rounded-lg bg-gray-50 ">
+                        <div class="px-3 py-1 text-xs font-medium leading-none text-center text-blue-800 bg-blue-200 rounded-full animate-pulse ">loading...</div>
+                    </div> :
                         <table className="w-full text-sm text-left ">
                             <thead >
                                 <tr className="w-full uppercase">
@@ -158,8 +167,8 @@ const Section = () => {
                                             {source.slug}
                                         </th>
                                         <th scope="row" className="px-6 py-3 text-right">
-                                            <button className='text-sm  rounded-md py-1 px-2' onClick={(e) => handleEdit(e, source.id, source.name, source.slug)}> <img src={edit_icon} alt='edit' className='h-5'/> </button>
-                                            <button className='text-sm  rounded-md py-1 px-2 ml-2' onClick={(e) => handleDelete(e, source.id)}> <img src={delete_icon} alt='delete' className='h-5'/> </button>
+                                            <button className='text-sm  rounded-md py-1 px-2' onClick={(e) => handleEdit(e, source.id, source.name, source.slug)}> <img src={edit_icon} alt='edit' className='h-5' /> </button>
+                                            <button className='text-sm  rounded-md py-1 px-2 ml-2' onClick={(e) => handleDelete(e, source.id)}> <img src={delete_icon} alt='delete' className='h-5' /> </button>
                                         </th>
                                     </tr>
                                 ))}
@@ -189,7 +198,7 @@ const Section = () => {
                                 onChange={(e) => setSlugEdit(e.target.value)}
                                 className="border border-gray-300 p-2 mb-4 w-full"
                             />
-                        
+
                             <div className="flex justify-end">
                                 <button className="bg-blue-500 text-white px-4 py-2 mr-2" onClick={handleSaveEdit}>Save</button>
                                 <button className="bg-gray-500 text-white px-4 py-2" onClick={() => setShowEditPopup(false)}>Cancel</button>

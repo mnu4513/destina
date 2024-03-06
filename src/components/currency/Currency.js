@@ -6,7 +6,7 @@ import delete_icon from '../../assets/ico/delete.svg';
 
 const Currency = () => {
     const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [editSourceId, setEditSourceId] = useState('');
     const [showEditPopup, setShowEditPopup] = useState(false);
     const [search, setSearch] = useState('');
@@ -173,7 +173,7 @@ const Currency = () => {
                 <input type='text' value={decimal_digits} placeholder='Enter decimal digits' onChange={(e) => setDecimal_digits(e.target.value)} className='border-2 border-gray-500 px-2 py-1 my-2 rounded-md w-full' />
                 <input type='text' value={name_plural} placeholder='Enter name plural' onChange={(e) => setName_plural(e.target.value)} className='border-2 border-gray-500 px-2 py-1 my-2 rounded-md w-full' />
                 <input type='text' value={type} placeholder='Enter type' onChange={(e) => setType(e.target.value)} className='border-2 border-gray-500 px-2 py-1 my-2 rounded-md w-full' />
- <hr />
+                <hr />
                 <button onClick={(e) => handleCreate(e)} className='border-2 bg-gray-500 text-white px-2 py-1 rounded-md w-full'>Add</button>
             </div>
 
@@ -184,7 +184,9 @@ const Currency = () => {
                     <button className='border py-1 px-2 bg-gray-500 text-white rounded-md' onClick={(e) => handleSearch(e)}>search</button>
                 </div>
                 {
-                    loading ? <h3>Loading</h3> :
+                    loading ? <div class="flex items-center mx-auto my-3 justify-center w-56 h-24 border border-gray-200 rounded-lg bg-gray-50 ">
+                        <div class="px-3 py-1 text-xs font-medium leading-none text-center text-blue-800 bg-blue-200 rounded-full animate-pulse ">loading...</div>
+                    </div> :
                         <table className="w-full text-sm text-left ">
                             <thead >
                                 <tr className="w-full uppercase">
@@ -259,8 +261,8 @@ const Currency = () => {
                                 className="border border-gray-300 p-2 mb-4 w-full"
                             />
 
-                             {/*  decimal digits */}
-                             <input
+                            {/*  decimal digits */}
+                            <input
                                 type="text"
                                 value={decimal_digitsEdit}
                                 placeholder='Enter decimal digits'
@@ -268,8 +270,8 @@ const Currency = () => {
                                 className="border border-gray-300 p-2 mb-4 w-full"
                             />
 
-                             {/*  name plural  */}
-                             <input
+                            {/*  name plural  */}
+                            <input
                                 type="text"
                                 value={name_pluralEdit}
                                 placeholder='Enter name plural '
@@ -277,8 +279,8 @@ const Currency = () => {
                                 className="border border-gray-300 p-2 mb-4 w-full"
                             />
 
-                             {/*  type */}
-                             <input
+                            {/*  type */}
+                            <input
                                 type="text"
                                 value={typeEdit}
                                 placeholder='Enter type'

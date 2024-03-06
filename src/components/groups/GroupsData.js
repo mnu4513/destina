@@ -5,205 +5,6 @@ import school_icon from '../../assets/ico/school.svg';
 import edit_icon from '../../assets/ico/edit.svg';
 import delete_icon from '../../assets/ico/delete.svg';
 
-const rows = [
-    {
-        "id": "18725b6d-d770-4e4b-93c9-3d62701d9764",
-        "institute_group_name": "Dummy 1 Institute Group",
-        "slug": null,
-        "about_group": null,
-        "headquarter_address": "Belgavi",
-        "email": "test1@gmail.com",
-        "phone": "1231231236",
-        "contact_person": "User",
-        "contact_person_phone": null,
-        "contact_person_email": null,
-        "website_url": 'group_url',
-        "established_year": null,
-        "group_type": "private",
-        "logo_url": null,
-        "logo_small_url": null,
-        "favicon_url": null,
-        "status": 1,
-        "tenancy_db_name": "u800761312_app1",
-        "tenancy_db_username": "u800761312_app1",
-        "tenancy_db_password": "u800761312_App1",
-        "created_by": null,
-        "updated_by": null,
-        "deleted_by": null,
-        "password": "$2y$12$iPN.aA3KcaKQCsMqNhX1QuUTBozTpdQvSu\/gG2S5TxJRT2G1i8flK",
-        "deleted_at": null,
-        "created_at": "2024-02-17T10:10:11.000000Z",
-        "updated_at": "2024-02-17T10:10:11.000000Z",
-        "data": null,
-        "domains": [
-            {
-                "id": 2,
-                "domain": "app1",
-                "tenant_id": "18725b6d-d770-4e4b-93c9-3d62701d9764",
-                "created_at": null,
-                "updated_at": null
-            }
-        ]
-    },
-    {
-        "id": "18725b6d-d770-4e4b-93c9-3d62701d9765",
-        "institute_group_name": "Dummy 2 Institute Group",
-        "slug": null,
-        "about_group": null,
-        "headquarter_address": "Belgavi",
-        "email": "test1@gmail.com",
-        "phone": "1231231236",
-        "contact_person": "User",
-        "contact_person_phone": null,
-        "contact_person_email": null,
-        "website_url": 'group_url',
-        "established_year": null,
-        "group_type": "private",
-        "logo_url": null,
-        "logo_small_url": null,
-        "favicon_url": null,
-        "status": 1,
-        "tenancy_db_name": "u800761312_app1",
-        "tenancy_db_username": "u800761312_app1",
-        "tenancy_db_password": "u800761312_App1",
-        "created_by": null,
-        "updated_by": null,
-        "deleted_by": null,
-        "password": "$2y$12$iPN.aA3KcaKQCsMqNhX1QuUTBozTpdQvSu\/gG2S5TxJRT2G1i8flK",
-        "deleted_at": null,
-        "created_at": "2024-02-17T10:10:11.000000Z",
-        "updated_at": "2024-02-17T10:10:11.000000Z",
-        "data": null,
-        "domains": [
-            {
-                "id": 2,
-                "domain": "app1",
-                "tenant_id": "18725b6d-d770-4e4b-93c9-3d62701d9764",
-                "created_at": null,
-                "updated_at": null
-            }
-        ]
-    },
-    {
-        "id": "18725b6d-d770-4e4b-93c9-3d62701d9766",
-        "institute_group_name": "Dummy 3 Institute Group",
-        "slug": null,
-        "about_group": null,
-        "headquarter_address": "Belgavi",
-        "email": "test1@gmail.com",
-        "phone": "1231231236",
-        "contact_person": "User",
-        "contact_person_phone": null,
-        "contact_person_email": null,
-        "website_url": 'group_url',
-        "established_year": null,
-        "group_type": "private",
-        "logo_url": null,
-        "logo_small_url": null,
-        "favicon_url": null,
-        "status": 1,
-        "tenancy_db_name": "u800761312_app1",
-        "tenancy_db_username": "u800761312_app1",
-        "tenancy_db_password": "u800761312_App1",
-        "created_by": null,
-        "updated_by": null,
-        "deleted_by": null,
-        "password": "$2y$12$iPN.aA3KcaKQCsMqNhX1QuUTBozTpdQvSu\/gG2S5TxJRT2G1i8flK",
-        "deleted_at": null,
-        "created_at": "2024-02-17T10:10:11.000000Z",
-        "updated_at": "2024-02-17T10:10:11.000000Z",
-        "data": null,
-        "domains": [
-            {
-                "id": 2,
-                "domain": "app1",
-                "tenant_id": "18725b6d-d770-4e4b-93c9-3d62701d9764",
-                "created_at": null,
-                "updated_at": null
-            }
-        ]
-    },
-    {
-        "id": "18725b6d-d770-4e4b-93c9-3d62701d9767",
-        "institute_group_name": "Dummy 4 Institute Group",
-        "slug": null,
-        "about_group": null,
-        "headquarter_address": "Belgavi",
-        "email": "test1@gmail.com",
-        "phone": "1231231236",
-        "contact_person": "User",
-        "contact_person_phone": null,
-        "contact_person_email": null,
-        "website_url": 'group_url',
-        "established_year": null,
-        "group_type": "private",
-        "logo_url": null,
-        "logo_small_url": null,
-        "favicon_url": null,
-        "status": 1,
-        "tenancy_db_name": "u800761312_app1",
-        "tenancy_db_username": "u800761312_app1",
-        "tenancy_db_password": "u800761312_App1",
-        "created_by": null,
-        "updated_by": null,
-        "deleted_by": null,
-        "password": "$2y$12$iPN.aA3KcaKQCsMqNhX1QuUTBozTpdQvSu\/gG2S5TxJRT2G1i8flK",
-        "deleted_at": null,
-        "created_at": "2024-02-17T10:10:11.000000Z",
-        "updated_at": "2024-02-17T10:10:11.000000Z",
-        "data": null,
-        "domains": [
-            {
-                "id": 2,
-                "domain": "app1",
-                "tenant_id": "18725b6d-d770-4e4b-93c9-3d62701d9764",
-                "created_at": null,
-                "updated_at": null
-            }
-        ]
-    },
-    {
-        "id": "18725b6d-d770-4e4b-93c9-3d62701d9768",
-        "institute_group_name": "Dummy 5 Institute Group",
-        "slug": null,
-        "about_group": null,
-        "headquarter_address": "Belgavi",
-        "email": "test1@gmail.com",
-        "phone": "1231231236",
-        "contact_person": "User",
-        "contact_person_phone": null,
-        "contact_person_email": null,
-        "website_url": 'group_url',
-        "established_year": null,
-        "group_type": "private",
-        "logo_url": null,
-        "logo_small_url": null,
-        "favicon_url": null,
-        "status": 1,
-        "tenancy_db_name": "u800761312_app1",
-        "tenancy_db_username": "u800761312_app1",
-        "tenancy_db_password": "u800761312_App1",
-        "created_by": null,
-        "updated_by": null,
-        "deleted_by": null,
-        "password": "$2y$12$iPN.aA3KcaKQCsMqNhX1QuUTBozTpdQvSu\/gG2S5TxJRT2G1i8flK",
-        "deleted_at": null,
-        "created_at": "2024-02-17T10:10:11.000000Z",
-        "updated_at": "2024-02-17T10:10:11.000000Z",
-        "data": null,
-        "domains": [
-            {
-                "id": 2,
-                "domain": "app1",
-                "tenant_id": "18725b6d-d770-4e4b-93c9-3d62701d9764",
-                "created_at": null,
-                "updated_at": null
-            }
-        ]
-    }
-    // ... (other rows)
-];
-
 const GroupTable = () => {
     const [columnVisibility, setColumnVisibility] = useState({
         institute_group_name: true,
@@ -213,27 +14,97 @@ const GroupTable = () => {
         website_url: false,
         established_year: false,
         group_type: false,
-        status: true,
-        edit: false,
-        delete: true,
+        status: true
     });
 
-    const [data, setData] = useState(rows);
+    const [data, setData] = useState([]);
     const [search, setSearch] = useState('');
     const [filterList, setFilterList] = useState(data);
+
+    const [institute_group_name, setinstitute_group_name] = useState('');
+    const [slug, setSlug] = useState('');
+    const [about_group, setabout_group] = useState('');
+    const [headquarter_address, setheadquarter_address] = useState('');
+    const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
+    const [contact_person, setcontact_person] = useState('');
+    const [contact_person_phone, setcontact_person_phone] = useState('');
+    const [contact_person_email, setcontact_person_email] = useState('');
+    const [website_url, setwebsite_url] = useState('');
+    const [established_year, setestablished_year] = useState('');
+    const [group_type, setgroup_type] = useState('');
+    const [logo_url, setlogo_url] = useState('');
+    const [logo_small_url, setlogo_small_url] = useState('');
+    const [favicon_url, setfavicon_url] = useState('');
+    const [password, setpassword] = useState('');
+    const [domain, setdomain] = useState('');
+    const [tenancy_db_name, settenancy_db_name] = useState('');
+    const [tenancy_db_username, settenancy_db_username] = useState('');
+    const [tenancy_db_password, settenancy_db_password] = useState('');
+
+    const [institute_group_nameEdit, setinstitute_group_nameEdit] = useState('');
+    const [slugEdit, setSlugEdit] = useState('');
+    const [about_groupEdit, setabout_groupEdit] = useState('');
+    const [headquarter_addressEdit, setheadquarter_addressEdit] = useState('');
+    const [emailEdit, setEmailEdit] = useState('');
+    const [phoneEdit, setPhoneEdit] = useState('');
+    const [contact_personEdit, setcontact_personEdit] = useState('');
+    const [contact_person_phoneEdit, setcontact_person_phoneEdit] = useState('');
+    const [contact_person_emailEdit, setcontact_person_emailEdit] = useState('');
+    const [website_urlEdit, setwebsite_urlEdit] = useState('');
+    const [established_yearEdit, setestablished_yearEdit] = useState('');
+    const [group_typeEdit, setgroup_typeEdit] = useState('');
+    const [logo_urlEdit, setlogo_urlEdit] = useState('');
+    const [logo_small_urlEdit, setlogo_small_urlEdit] = useState('');
+    const [favicon_urlEdit, setfavicon_urlEdit] = useState('');
+    const [passwordEdit, setpasswordEdit] = useState('');
+    const [domainEdit, setdomainEdit] = useState('');
+    const [tenancy_db_nameEdit, settenancy_db_nameEdit] = useState('');
+    const [tenancy_db_usernameEdit, settenancy_db_usernameEdit] = useState('');
+    const [tenancy_db_passwordEdit, settenancy_db_passwordEdit] = useState('');
+
 
     useEffect(() => {
         fetchData();
     }, []);
+    useEffect(() => {
+        setFilterList(data);
+    }, [search]);
 
+    // Create a new group 
+    async function createGroup() {
+        try {
+            const response = await fetch(baseUrl + '/superadmin/institute_group', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: data
+            });
+            const jsonData = await response.json();
+            if (jsonData.success) {
+                window.location.reload();
+            } else {
+                window.alert(jsonData.message);
+            }
+        } catch (error) {
+            console.log(error);
+        };
+    };
+
+    // fetch groups data
     async function fetchData() {
         try {
             const respose = await fetch(baseUrl + '/superadmin/institute_group');
             const jsonData = await respose.json();
-            // console.log(jsonData);
+            if (jsonData.success) {
+                setData(jsonData.data);
+            } else {
+                window.alert(jsonData.message);
+            };
         } catch (error) {
             console.log(error);
-        }
+        };
     };
 
     // column name handler 
@@ -271,10 +142,14 @@ const GroupTable = () => {
                 }
             });
             const jsonData = await respose.json();
-            console.log(jsonData);
+            if (jsonData.success) {
+                window.alert('Deleted');
+            } else {
+                window.alert(jsonData.message);
+            };
         } catch (error) {
             console.log(error);
-        }
+        };
     };
 
     // Status handler 
@@ -289,11 +164,12 @@ const GroupTable = () => {
             const jsonData = await respose.json();
             if (jsonData.success) {
                 window.location.reload();
+            } else {
+                window.alert(jsonData.message);
             };
-
         } catch (error) {
-            console.error('Error during status update:', error);
-        }
+            console.error(error);
+        };
     };
 
     const handleCheckboxChange = (columnName) => {
@@ -310,7 +186,7 @@ const GroupTable = () => {
         <div className="mx-auto my-8">
             <div className='flex flex-row justify-center space-x-3'>
                 <input className='border py-2 px-3 rounded-md' type='text' placeholder='search' value={search} onChange={(e) => setSearch(e.target.value)} />
-                <img src={school_icon} onClick={(e) => handleSearch(e)} />
+                <img src={school_icon} onClick={(e) => handleSearch(e)} alt='' />
             </div>
 
             <div className="bg-white shadow overflow-hidden sm:rounded-lg">
@@ -340,14 +216,16 @@ const GroupTable = () => {
 
 
             <table className="w-full border-collapse border rounded">
-                <thead className="bg-gray-200">
+                <thead className="bg-gray-200 uppercase">
                     <tr>
                         {Object.keys(columnVisibility).map((columnName) => (
                             <th key={columnName} className={`border p-2 ${columnVisibility[columnName] ? '' : 'hidden'}`}>
                                 {handleColumnName(columnName)}
                             </th>
                         ))}
+                        <th scope="col" className="px-6 py-3 flex-shrink-0 text-right mr-3">action</th>
                     </tr>
+
                 </thead>
                 <tbody>
                     {filterList.map((row) => (
@@ -368,26 +246,18 @@ const GroupTable = () => {
                                             >
                                                 {row.status === '0' ? 'inactive' : 'active'}
                                             </button>
-                                        ) : columnName === 'delete' ? (
-
-                                            <button
-                                                onClick={() => handleDelete(row.id)}
-                                                className={`text-sm  py-1 px-2 rounded-md`}
-                                            >
-                                                <img src={delete_icon} alt='delete' className='h-5' />
-                                            </button>
-                                        ) : columnName === 'edit' ? (
-                                            <Link to={`/group/edit-group/${row.id}`} >
-                                                <button className={` text-sm  py-1 px-2 rounded-md`}>
-                                                    <img src={edit_icon} alt='edit' className='h-5' />
-                                                </button>
-                                            </Link>
                                         ) : (
                                             row[columnName]
                                         )
                                     }
                                 </td>
                             ))}
+                            <th scope="row" className="px-6 py-3 text-right">
+                                <div className='flex flex-row justify-end'>
+                                    <button className='text-sm  rounded-md py-1 px-2' onClick={(e) => handleEdit(e, row.id, row.name, row.slug, row.url, row.logo_url, row.description)}> <img src={edit_icon} alt='edit' className='h-5' /> </button>
+                                    <button className='text-sm  rounded-md py-1 px-2 ml-2' onClick={(e) => handleDelete(e, row.id)}> <img src={delete_icon} alt='delete' className='h-5' /> </button>
+                                </div>
+                            </th>
                         </tr>
                     ))}
                 </tbody>

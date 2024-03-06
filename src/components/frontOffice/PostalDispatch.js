@@ -4,19 +4,30 @@ import edit_icon from '../../assets/ico/edit.svg';
 import delete_icon from '../../assets/ico/delete.svg';
 
 
-const BoardClass = () => {
+const PostalDispatch = () => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [editSourceId, setEditSourceId] = useState('');
     const [showEditPopup, setShowEditPopup] = useState(false);
     const [search, setSearch] = useState('');
     const [filterList, setFilterList] = useState(data);
-    const [board_or_university_id, setBoard_or_university_id] = useState('');
-    const [course_type_id, setCourse_type_id] = useState('');
-    const [course_id, setCourse_id] = useState('');
-    const [board_or_university_idEdit, setBoard_or_university_idEdit] = useState('');
-    const [course_type_idEdit, setCourse_type_idEdit] = useState('');
-    const [course_idEdit, setCourse_idEdit] = useState('');
+
+    const [to_title, setto_title] = useState('');
+    const [to_address, setto_address] = useState('');
+    const [reference_no, setreference_no] = useState('');
+    const [note, setNote] = useState('');
+    const [from_title, setfrom_title] = useState('');
+    const [date, setDate] = useState('');
+    const [document, setDocument] = useState('');
+
+    const [to_titleEdit, setto_titleEdit] = useState('');
+    const [to_addressEdit, setto_addressEdit] = useState('');
+    const [reference_noEdit, setreference_noEdit] = useState('');
+    const [noteEdit, setNoteEdit] = useState('');
+    const [from_titleEdit, setfrom_titleEdit] = useState('');
+    const [dateEdit, setDateEdit] = useState('');
+    const [documentEdit, setDocumentEdit] = useState('');
+
 
     useEffect(() => {
         getData();
@@ -28,12 +39,12 @@ const BoardClass = () => {
 
     // To create new source 
     async function handleCreate(e) {
-        const response = await fetch(baseUrl + '/admin/board_class', {
+        const response = await fetch(baseUrl + '/admin/front_office/postal_dispatch', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ board_or_university_id, course_type_id, course_id })
+            body: JSON.stringify({ to_title, to_address, reference_no, note, from_title, date, document })
         });
 
         const jsonData = await response.json();
@@ -48,34 +59,38 @@ const BoardClass = () => {
     // To fetch all sources
     async function getData() {
         try {
-            const response = await fetch(baseUrl + '/admin/board_class');
+            const response = await fetch(baseUrl + '/admin/front_office/postal_dispatch');
             const jsonData = await response.json();
             if (jsonData.success) {
                 setData(jsonData.data);
                 setLoading(false);
             } else {
                 window.alert(jsonData.message);
-            };
+            }
         } catch (error) {
             console.log(error);
-        };
+        }
     };
 
 
     // Handle search 
     async function handleSearch(e) {
         e.preventDefault();
-        const list = data.filter((e) => e.name.toLowerCase().includes(search.toLowerCase()));
+        const list = data.filter((e) => e.to_title.toLowerCase().includes(search.toLowerCase()));
         setFilterList(list);
     };
 
     // Edit source handler
-    async function handleEdit(e, id, board_or_university_id, course_type_id, course_id) {
+    async function handleEdit(e, id, to_title, to_address, reference_no, note, from_title, date, document) {
         e.preventDefault();
         setEditSourceId(id);
-        setBoard_or_university_idEdit(board_or_university_id);
-        setCourse_type_idEdit(course_type_id);
-        setCourse_idEdit(course_id);
+        setto_titleEdit(to_title);
+        setto_addressEdit(to_address);
+        setreference_noEdit(reference_no);
+        setNoteEdit(note);
+        setfrom_titleEdit(from_title);
+        setDateEdit(date);
+        setDocumentEdit(document);
         setShowEditPopup(true);
     };
 
@@ -83,12 +98,12 @@ const BoardClass = () => {
     async function handleSaveEdit(e) {
         e.preventDefault();
         try {
-            const response = await fetch(baseUrl + '/admin/board_class/' + editSourceId, {
+            const response = await fetch(baseUrl + '/admin/front_office/postal_dispatch/' + editSourceId, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ board_or_university_id: board_or_university_idEdit, course_type_id: course_type_idEdit, course_id: course_idEdit })
+                body: JSON.stringify({ to_title: to_titleEdit, to_address: to_addressEdit, reference_no: reference_noEdit, note: note, from_title: from_titleEdit, date: dateEdit, document: documentEdit })
             });
 
             const jsonData = await response.json();
@@ -108,7 +123,7 @@ const BoardClass = () => {
     async function handleDelete(e, id) {
         e.preventDefault();
         try {
-            const response = await fetch(baseUrl + '/admin/board_class/' + id, {
+            const response = await fetch(baseUrl + '/admin/front_office/postal_dispatch/' + id, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'
@@ -129,13 +144,17 @@ const BoardClass = () => {
 
     return (
         <div className='flex flex-col lg:flex-row w-full'>
-            {/* Create role */}
-            <div className='border-2 flex-grow min-w-min max-h-fit border-gray-200 px-5 py-2 space-y-3 mt-4 mx-auto w-full'>
-                <p>Add Payment Gateway</p>
+            {/* Create source */}
+            <div className='border-2 flex-grow min-w-min max-h-min border-gray-200 px-5 py-2 space-y-3 mt-4 mx-auto w-full'>
+                <p>Add Timezone</p>
                 <hr />
-                <input type='text' value={board_or_university_id} placeholder='Enter board or university id' onChange={(e) => setBoard_or_university_id(e.target.value)} className='border-2 border-gray-500 px-2 py-1 my-2 rounded-md w-full' />
-                <input type='text' value={course_type_id} placeholder='Enter course type id' onChange={(e) => setCourse_type_id(e.target.value)} className='border-2 border-gray-500 px-2 py-1 my-2 rounded-md w-full' />
-                <input type='text' value={course_id} placeholder='Enter course id' onChange={(e) => setCourse_id(e.target.value)} className='border-2 border-gray-500 px-2 py-1 my-2 rounded-md w-full' />
+                <input type='text' value={to_title} placeholder='Enter to title' onChange={(e) => setto_title(e.target.value)} className='border-2 border-gray-500 px-2 py-1 my-2 rounded-md w-full' />
+                <input type='text' value={to_address} placeholder='Enter to address' onChange={(e) => setto_address(e.target.value)} className='border-2 border-gray-500 px-2 py-1 my-2 rounded-md w-full' />
+                <input type='text' value={reference_no} placeholder='Enter reference no' onChange={(e) => setreference_no(e.target.value)} className='border-2 border-gray-500 px-2 py-1 my-2 rounded-md w-full' />
+                <input type='text' value={note} placeholder='Enter note' onChange={(e) => setNote(e.target.value)} className='border-2 border-gray-500 px-2 py-1 my-2 rounded-md w-full' />
+                <input type='text' value={from_title} placeholder='Enter from title' onChange={(e) => setfrom_title(e.target.value)} className='border-2 border-gray-500 px-2 py-1 my-2 rounded-md w-full' />
+                <input type='text' value={date} placeholder='Enter date DD/MM/YYYY' onChange={(e) => setDate(e.target.value)} className='border-2 border-gray-500 px-2 py-1 my-2 rounded-md w-full' />
+                <input type='text' value={document} placeholder='Enter document' onChange={(e) => setDocument(e.target.value)} className='border-2 border-gray-500 px-2 py-1 my-2 rounded-md w-full' />
                 <hr />
                 <button onClick={(e) => handleCreate(e)} className='border-2 bg-gray-500 text-white px-2 py-1 rounded-md w-full'>Add</button>
             </div>
@@ -153,9 +172,10 @@ const BoardClass = () => {
                         <table className="w-full text-sm text-left ">
                             <thead >
                                 <tr className="w-full uppercase">
-                                    <th scope="col" className="px-6 py-3 flex-grow">Board / Uni ID</th>
-                                    <th scope="col" className="px-6 py-3 uppercase">course type id</th>
-                                    <th scope="col" className="px-6 py-3 uppercase">course id</th>
+                                    <th scope="col" className="px-6 py-3 flex-grow">to title </th>
+                                    <th scope="col" className="px-6 py-3 uppercase">from title</th>
+                                    <th scope="col" className="px-6 py-3 uppercase">date</th>
+                                    <th scope="col" className="px-6 py-3 flex-shrink-0 text-right mr-3">action</th>
                                 </tr>
                             </thead>
 
@@ -163,17 +183,17 @@ const BoardClass = () => {
                                 {filterList.map((source) => (
                                     <tr key={source.id} className="bg-white border-b text-gray-600">
                                         <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                            {source.board_or_university_id}
+                                            {source.to_title}
                                         </th>
                                         <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                            {source.course_type_id}
+                                            {source.from_title}
                                         </th>
                                         <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                            {source.course_id}
+                                            {source.date}
                                         </th>
                                         <th scope="row" className="px-6 py-3 text-right">
                                             <div className='flex flex-row justify-end'>
-                                                <button className='text-sm  rounded-md py-1 px-2' onClick={(e) => handleEdit(e, source.id, source.board_or_university_id, source.course_type_id, source.course_id)}> <img src={edit_icon} alt='edit' className='h-5' /> </button>
+                                                <button className='text-sm  rounded-md py-1 px-2' onClick={(e) => handleEdit(e, source.id, source.to_title, source.to_address, source.reference_no, source.note, source.from_title, source.date, source.document)}> <img src={edit_icon} alt='edit' className='h-5' /> </button>
                                                 <button className='text-sm  rounded-md py-1 px-2 ml-2' onClick={(e) => handleDelete(e, source.id)}> <img src={delete_icon} alt='delete' className='h-5' /> </button>
                                             </div>
                                         </th>
@@ -189,29 +209,66 @@ const BoardClass = () => {
                     <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-50">
                         <div className="bg-white p-8 rounded-md">
                             <h2 className="text-2xl mb-4">Edit source</h2>
-                            {/* baord or uni id */}
+
+
+                            {/* to title  */}
                             <input
                                 type="text"
-                                value={board_or_university_idEdit}
-                                placeholder='Enter board / uni id'
-                                onChange={(e) => setBoard_or_university_idEdit(e.target.value)}
+                                value={to_titleEdit}
+                                placeholder='Enter to title'
+                                onChange={(e) => setto_titleEdit(e.target.value)}
                                 className="border border-gray-300 p-2 mb-4 w-full"
                             />
-                            {/* course type id */}
+                            {/* to address  */}
                             <input
                                 type="text"
-                                value={course_type_idEdit}
-                                placeholder='Enter course type id'
-                                onChange={(e) => setCourse_type_idEdit(e.target.value)}
+                                value={to_addressEdit}
+                                placeholder='Enter to address '
+                                onChange={(e) => setto_addressEdit(e.target.value)}
+                                className="border border-gray-300 p-2 mb-4 w-full"
+                            />
+                            {/* reference no */}
+                            <input
+                                type="text"
+                                value={reference_noEdit}
+                                placeholder='Enter reference no'
+                                onChange={(e) => setreference_noEdit(e.target.value)}
                                 className="border border-gray-300 p-2 mb-4 w-full"
                             />
 
-                            {/* course id  */}
+                            {/*  note */}
                             <input
                                 type="text"
-                                value={course_idEdit}
-                                placeholder='Enter course id'
-                                onChange={(e) => setCourse_idEdit(e.target.value)}
+                                value={noteEdit}
+                                placeholder='Enter note'
+                                onChange={(e) => setNoteEdit(e.target.value)}
+                                className="border border-gray-300 p-2 mb-4 w-full"
+                            />
+
+                            {/*  from titile */}
+                            <input
+                                type="text"
+                                value={from_titleEdit}
+                                placeholder='Enter from title'
+                                onChange={(e) => setfrom_titleEdit(e.target.value)}
+                                className="border border-gray-300 p-2 mb-4 w-full"
+                            />
+
+                            {/*  date  */}
+                            <input
+                                type="text"
+                                value={dateEdit}
+                                placeholder='Enter date DD/MM/YYYY'
+                                onChange={(e) => setDateEdit(e.target.value)}
+                                className="border border-gray-300 p-2 mb-4 w-full"
+                            />
+
+                            {/*  document */}
+                            <input
+                                type="text"
+                                value={documentEdit}
+                                placeholder='Enter document'
+                                onChange={(e) => setDocumentEdit(e.target.value)}
                                 className="border border-gray-300 p-2 mb-4 w-full"
                             />
 
@@ -228,4 +285,4 @@ const BoardClass = () => {
     );
 };
 
-export default BoardClass;
+export default PostalDispatch;

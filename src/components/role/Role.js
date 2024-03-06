@@ -6,7 +6,7 @@ import delete_icon from '../../assets/ico/delete.svg';
 
 const Role = () => {
     const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [editSourceId, setEditSourceId] = useState('');
     const [showEditPopup, setShowEditPopup] = useState(false);
     const [search, setSearch] = useState('');
@@ -28,24 +28,26 @@ const Role = () => {
         setFilterList(data);
     }, [data]);
 
-    // To create new source 
+    // To create new role 
     async function handleCreate(e) {
         const response = await fetch(baseUrl + '/admin/role', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ name, slug })
+            body: JSON.stringify({ name, slug, guard_name, description })
         });
 
         const jsonData = await response.json();
 
         if (jsonData.success) {
             window.location.reload();
+        } else {
+            window.alert(jsonData.message);
         };
     };
 
-    // To fetch all sources
+    // To fetch all role
     async function getData() {
         try {
             const response = await fetch(baseUrl + '/admin/role');
@@ -55,7 +57,7 @@ const Role = () => {
                 setLoading(false);
             } else {
                 window.alert(jsonData.message);
-            }
+            };
         } catch (error) {
             console.log(error);
         }
@@ -83,24 +85,26 @@ const Role = () => {
             console.log(jsonData);
             if (jsonData.success) {
                 window.location.reload();
+            } else {
+                window.alert(jsonData.message);
             };
         } catch (error) {
             console.log(error);
         }
     };
 
-    // Edit source handler
+    // Edit role handler
     async function handleEdit(e, id, name, slug, guard_name, description) {
         e.preventDefault();
         setEditSourceId(id);
         setNameEdit(name);
         setSlugEdit(slug);
         setGuard_nameEdit(guard_name);
-        setDescriptionEdit(descriptionEdit);
+        setDescriptionEdit(description);
         setShowEditPopup(true);
     };
 
-    // Save edited source handler
+    // Save edited role handler
     async function handleSaveEdit(e) {
         e.preventDefault();
         try {
@@ -125,7 +129,7 @@ const Role = () => {
         }
     };
 
-    // Delete source handler
+    // Delete role handler
     async function handleDelete(e, id) {
         e.preventDefault();
         try {
@@ -162,14 +166,16 @@ const Role = () => {
                 <button onClick={(e) => handleCreate(e)} className='border-2 bg-gray-500 text-white px-2 py-1 rounded-md w-full'>Add</button>
             </div>
 
-            {/* Show sources data */}
+            {/* Show role data */}
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg flex-grow w-full mx-3">
                 <div className='border py-3 border-gray-500 mt-4 text-left'>
                     <input className='border py-1 px-2 mx-2 border-gray-500 rounded-md' type='text' placeholder='search source' value={search} onChange={(e) => setSearch(e.target.value)} />
                     <button className='border py-1 px-2 bg-gray-500 text-white rounded-md' onClick={(e) => handleSearch(e)}>search</button>
                 </div>
                 {
-                    loading ? <h3>Loading</h3> :
+                    loading ? <div class="flex items-center mx-auto my-3 justify-center w-56 h-24 border border-gray-200 rounded-lg bg-gray-50 ">
+                        <div class="px-3 py-1 text-xs font-medium leading-none text-center text-blue-800 bg-blue-200 rounded-full animate-pulse ">loading...</div>
+                    </div> :
                         <table className="w-full text-sm text-left ">
                             <thead >
                                 <tr className="w-full uppercase">
